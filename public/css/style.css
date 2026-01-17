@@ -1,0 +1,515 @@
+/* ====== ΧΡΩΜΑΤΑ ====== */
+:root {
+  --primary: #0d3b66;
+  --secondary: #1d6fa5;
+  --light: #f4f6f9;
+  --gray: #e1e5ea;
+}
+
+/* ====== RESET & FONT ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Officina Sans ITC", "Segoe UI", Arial, sans-serif;
+}
+
+/* 
+ Σημείωση:
+ Η Officina Sans ITC δεν είναι web-safe.
+ Αν δεν υπάρχει στο σύστημα, θα χρησιμοποιηθεί Segoe UI / Arial
+ που υποστηρίζουν πλήρως ελληνικά.
+*/
+
+body {
+  background-color: var(--light);
+}
+
+/* ====== CONTAINER GRID ====== */
+#container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "aside main"
+    "footer footer";
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 16px;
+}
+
+/* ====== HEADER ====== */
+header {
+  grid-area: header;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 32px;
+  text-align: center;
+  border-radius: 14px;
+}
+
+header h1 {
+  font-size: 2.3em;
+  margin-bottom: 6px;
+}
+
+header p {
+  font-size: 1em;
+  opacity: 0.9;
+}
+
+/* ====== NAV (ΚΕΝΤΡΑΡΙΣΜΕΝΟ) ====== */
+nav {
+  grid-area: nav;
+  background: var(--primary);
+  border-radius: 14px;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 26px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+nav ul li a:hover {
+  background-color: var(--secondary);
+  transform: scale(1.08);
+}
+
+
+/* ====== ASIDE ====== */
+aside {
+  grid-area: aside;
+  background: var(--light);
+  padding: 22px;
+  border-radius: 14px;
+}
+
+.aside-section {
+  margin-bottom: 26px;
+}
+
+.aside-section h3 {
+  margin-bottom: 12px;
+  color: var(--primary);
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 6px;
+  font-size: 1.05em;
+}
+
+.aside-section ul {
+  list-style: none;
+}
+
+.aside-section ul li {
+  padding: 9px 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.aside-section ul li:hover {
+  background-color: var(--gray);
+  transform: scale(1.05);
+}
+
+
+/* ====== MAIN ====== */
+main {
+  grid-area: main;
+  padding: 28px;
+  background: white;
+  border-radius: 14px;
+  line-height: 1.7;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* ====== FOOTER (ΔΙΟΡΘΩΜΕΝΟ) ====== */
+footer {
+  grid-area: footer;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9em;
+  border-radius: 14px;
+}
+
+/* 
+ ΔΙΟΡΘΩΣΗ:
+ - Δεν έχει margin
+ - Δεν "κολλάει" στο container
+ - Ευθυγραμμίζεται σωστά στο grid
+*/
+
+/* ====== HIDDEN ====== */
+.hidden {
+  display: none;
+}
+
+.photo-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.photo-grid img {
+  width: 30%;
+  border-radius: 12px;
+}
+
+/* =========================
+   TABLET (max-width: 900px)
+   ========================= */
+@media (max-width: 900px) {
+
+  #container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "aside"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  nav ul li {
+    float: none;
+    display: inline-block;
+  }
+
+  aside {
+    margin-bottom: 15px;
+  }
+
+  .photo-grid img {
+    width: 45%;
+  }
+}
+
+/* =========================
+   MOBILE (max-width: 600px)
+   ========================= */
+@media (max-width: 600px) {
+
+  nav ul li {
+    display: block;
+    text-align: center;
+  }
+
+  nav ul li a {
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .photo-grid {
+    flex-direction: column;
+  }
+
+  .photo-grid img {
+    width: 100%;
+  }
+
+  aside, main {
+    padding: 15px;
+  }
+}
+
+/* ====== LOGIN FORM STYLING ====== */
+
+#loginForm {
+  max-width: 380px;
+  margin: 20px 0;
+  padding: 25px;
+  border-radius: 14px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+#loginForm label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+#loginForm input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+#loginForm input:focus {
+  outline: none;
+  border-color: #1d3557;
+  box-shadow: 0 0 0 2px rgba(29, 53, 87, 0.2);
+}
+
+#loginForm button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1d3557;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#loginForm button:hover {
+  background-color: #16324f;
+}
+
+#loginMessage {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+h1, h2, h3 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.20);
+}
+
+
+/* ====== FORCE CENTER FOR FORMS IN MAIN ====== */
+main form {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ====== TABLE STYLE (AWARDS & LINKS) ====== */
+
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; /* για να δουλέψει το border-radius */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+main thead {
+  background-color: #1d3557;
+  color: white;
+}
+
+main th,
+main td {
+  padding: 14px 16px;
+  text-align: center;
+}
+
+main th {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+main tbody tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+main tbody tr:last-child {
+  border-bottom: none;
+}
+
+main tbody tr:hover {
+  background-color: #f5f7fa;
+}
+
+
+/* ====== PHOTO GALLERY (UNIFORM + HOVER) ====== */
+
+.photo-grid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.photo-grid img {
+  width: 280px;          /* σταθερό πλάτος */
+  height: 360px;         /* ίδιο ύψος για όλες */
+  object-fit: cover;     /* σωστό crop χωρίς παραμόρφωση */
+  border-radius: 18px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* διακριτικό hover */
+.photo-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== LINKS TABLE STYLE ====== */
+.link-item {
+  text-decoration: none;
+  color: #1d3557;
+  font-weight: 500;
+}
+
+.link-item:hover {
+  text-decoration: underline;
+}
+
+/* ====== ADMIN AWARD FORM ====== */
+#awardForm {
+  max-width: 420px;
+  margin: 20px auto;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: #f9fafc;
+}
+
+#awardForm input,
+#awardForm select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #cfd6e0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#awardForm input:focus,
+#awardForm select:focus {
+  border-color: #2b6cb0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
+#awardForm button {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: #2b6cb0;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#awardForm button:hover {
+  background: #234e84;
+  transform: translateY(-1px);
+}
+
+/* ====== ADMIN LINK FORM ====== */
+#linkForm {
+  max-width: 420px;
+  margin: 20px auto;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: #f9fafc;
+}
+
+#linkForm input,
+#linkForm select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #cfd6e0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#linkForm input:focus,
+#linkForm select:focus {
+  border-color: #2b6cb0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
+#linkForm button {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: #2b6cb0;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#linkForm button:hover {
+  background: #234e84;
+  transform: translateY(-1px);
+}
+
+/* ====== AWARDS RESPONSIVE ====== */
+
+/* Default: δείχνουμε τον πίνακα */
+.awards-cards {
+  display: none;
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  .awards-table {
+    display: none;
+  }
+
+  .awards-cards {
+    display: block;
+  }
+
+  .award-card {
+    background: #f9fafc;
+    padding: 16px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+  }
+
+  .award-card h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .award-card p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+}
+
+
+/* ====== ACTIVE MENU ====== */
+nav a.active {
+  background: #2b6cb0;
+  color: #fff;
+  border-radius: 10px;
+}
+
+aside li.active {
+  background: #e6eef9;
+  font-weight: 600;
+  border-radius: 8px;
+}
